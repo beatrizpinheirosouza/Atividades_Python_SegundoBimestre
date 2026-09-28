@@ -1,0 +1,85 @@
+1.O que é lógica de programação?
+É a forma de organizar passos e regras para resolver um problema através de um programa.
+
+2.O que é um fluxograma?
+É uma representação visual dos passos de um algoritmo.
+
+3.O que é uma variável?
+É um espaço na memória usado para armazenar um valor que pode mudar.
+
+4.Tipos de variáveis:
+PHP: string, integer, float, boolean, array, object.
+Python: int, float, str, bool, list, tuple, dict.
+Java: int, float, double, char, boolean, String.
+
+5.Algoritmo das 3 notas — Fluxograma:
+[Início]
+   ↓
+[Leia N1, N2, N3]
+   ↓
+[Média = (N1+N2+N3)/3]
+   ↓
+[Imprima Média]
+   ↓
+[Fim]
+
+6.Algoritmo das 3 notas — Fluxograma:
+Início
+   Leia N1, N2, N3
+   Média ← (N1 + N2 + N3) / 3
+   Escreva Média
+Fim
+
+7.O que é um servidor web?
+É um sistema que armazena e entrega páginas e arquivos para os usuários pela internet.
+
+8.Servidores web conhecidos:
+Apache, Nginx, Microsoft IIS e LiteSpeed.
+
+9.O que é HTML?
+É uma linguagem de marcação usada para criar a estrutura de páginas da web.
+
+----------Sobre estrutura de condição análise---------
+
+(QUESTÃO DE V OU F): Verdadeira
+
+1. Soma das faltas do 1º e 2º bimestre
+Início
+   Leia faltas1
+   Leia faltas2
+   soma ← faltas1 + faltas2
+   Escreva soma
+Fim
+
+2. Soma de três notas
+Início
+   Leia nota1
+   Leia nota2
+   Leia nota3
+   soma ← nota1 + nota2 + nota3
+   Escreva soma
+Fim
+
+3. Média de três notas
+Início
+   Leia nota1
+   Leia nota2
+   Leia nota3
+   média ← (nota1 + nota2 + nota3) / 3
+   Escreva média
+Fim
+
+4. Converter horas e minutos para apenas minutos
+Início
+   Leia horas
+   Leia minutos
+   total ← (horas × 60) + minutos
+   Escreva total
+Fim
+
+5. Celsius para Fahrenheit
+Início
+   Leia celsius
+   fahrenheit ← 32 + (1.8 × celsius)
+   Escreva fahrenheit
+Fim
