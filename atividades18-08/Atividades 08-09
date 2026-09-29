@@ -1,0 +1,111 @@
+1.
+faltas1 = int(input("Faltas do 1º bimestre: "))
+faltas2 = int(input("Faltas do 2º bimestre: "))
+
+soma = faltas1 + faltas2
+
+print("Total de faltas:", soma)
+
+2.
+n1 = float(input("Nota 1: "))
+n2 = float(input("Nota 2: "))
+n3 = float(input("Nota 3: "))
+
+soma = n1 + n2 + n3
+
+print("Soma:", soma)
+
+3.
+n1 = float(input("Nota 1: "))
+n2 = float(input("Nota 2: "))
+n3 = float(input("Nota 3: "))
+
+media = (n1 + n2 + n3) / 3
+
+print("Média:", media)
+
+4.
+horas = int(input("Horas: "))
+minutos = int(input("Minutos: "))
+
+total = horas * 60 + minutos
+
+print("Total em minutos:", total)
+
+5.
+celsius = float(input("Temperatura em Celsius: "))
+
+fahrenheit = 32 + 1.8 * celsius
+
+print("Temperatura em Fahrenheit:", fahrenheit)
+
+6.
+import math
+
+lado1 = float(input("Primeiro lado: "))
+lado2 = float(input("Segundo lado: "))
+
+hipotenusa = math.sqrt(lado1 ** 2 + lado2 ** 2)
+
+print("Hipotenusa:", hipotenusa)
+
+7.
+A = int(input("A: "))
+B = int(input("B: "))
+C = int(input("C: "))
+D = int(input("D: "))
+
+media = (A * 3 + B * 4 + C * 2 + D * 5) / 14
+
+print("Média:", media)
+
+8.
+A = int(input("A: "))
+B = int(input("B: "))
+C = int(input("C: "))
+D = int(input("D: "))
+
+media = (A * 7 + B * 3 + C * 4 + D * 2) / 16
+
+print("Média:", media)
+
+9.
+prestacao = float(input("Prestação atual: "))
+taxa = float(input("Taxa de juros: "))
+dias = int(input("Dias de atraso: "))
+
+nova = prestacao + (prestacao * taxa * dias) / 100
+
+print("Nova prestação:", nova)
+
+10.
+raio = float(input("Raio: "))
+altura = float(input("Altura: "))
+
+pi = 3.14
+area_base = pi * raio ** 2
+volume = area_base * altura
+
+print("Volume:", volume)
+
+11.
+raio = float(input("Raio: "))
+altura = float(input("Altura: "))
+
+pi = 3.14
+area_base = pi * raio ** 2
+volume = (area_base * altura) / 3
+
+print("Volume:", volume)
+
+12.
+raio = float(input("Raio: "))
+altura = float(input("Altura: "))
+
+pi = 3.14
+area_base = pi * raio ** 2
+area_lateral = 2 * pi * raio * altura
+
+area = 2 * area_base + area_lateral
+
+print("Área:", area)
