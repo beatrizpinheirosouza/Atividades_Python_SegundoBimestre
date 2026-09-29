@@ -1,0 +1,368 @@
+1. Olá, usuário!
+nome = input("Digite seu nome: ")
+print("Olá,", nome, "!")
+
+-----
+
+2. Soma de dois números
+n1 = float(input("Digite o primeiro número: "))
+n2 = float(input("Digite o segundo número: "))
+soma = n1 + n2
+print("Soma:", soma)
+
+-----
+
+3. Média de 3 notas
+n1 = float(input("Nota 1: "))
+n2 = float(input("Nota 2: "))
+n3 = float(input("Nota 3: "))
+media = (n1 + n2 + n3) / 3
+print("Média:", media)
+
+-----
+
+4. Par ou ímpar
+numero = int(input("Digite um número: "))
+if numero % 2 == 0:
+    print("Par")
+else:
+    print("Ímpar")
+
+-----
+
+5. Tabuada
+numero = int(input("Digite um número: "))
+for i in range(1, 11):
+    print(numero, "x", i, "=", numero * i)
+Extra — escolher até onde vai:
+numero = int(input("Digite um número: "))
+fim = int(input("Tabuada até: "))
+for i in range(1, fim + 1):
+    print(numero, "x", i, "=", numero * i)
+
+-----
+
+6. Contador de vogais
+frase = input("Digite uma frase: ")
+contador = 0
+for letra in frase:
+    if letra.lower() in "aeiou":
+        contador += 1
+print("Quantidade de vogais:", contador)
+
+-----
+
+7. Maior, menor e média
+n = int(input("Quantos números? "))
+numeros = []
+for i in range(n):
+    numero = float(input("Digite um número: "))
+    numeros.append(numero)
+print("Maior:", max(numeros))
+print("Menor:", min(numeros))
+print("Média:", sum(numeros) / n)
+
+-----
+
+8. Jogo de adivinhação
+import random
+numero = random.randint(1, 100)
+tentativas = 0
+while True:
+    palpite = int(input("Tente adivinhar: "))
+    tentativas += 1
+    if palpite == numero:
+        print("Acertou!")
+        print("Tentativas:", tentativas)
+        break
+    elif palpite < numero:
+        print("O número é maior!")
+    else:
+        print("O número é menor!")
+
+-----
+
+9. Calculadora Simples
+def somar(a, b):
+    return a + b
+
+def subtrair(a, b):
+    return a - b
+
+def multiplicar(a, b):
+    return a * b
+
+def dividir(a, b):
+    if b == 0:
+        return "Não é possível dividir por zero!"
+    return a / b
+
+
+print("=== CALCULADORA ===")
+print("1 - Somar")
+print("2 - Subtrair")
+print("3 - Multiplicar")
+print("4 - Dividir")
+
+opcao = int(input("Escolha uma opção: "))
+
+a = float(input("Digite o primeiro número: "))
+b = float(input("Digite o segundo número: "))
+
+if opcao == 1:
+    print("Resultado:", somar(a, b))
+
+elif opcao == 2:
+    print("Resultado:", subtrair(a, b))
+
+elif opcao == 3:
+    print("Resultado:", multiplicar(a, b))
+
+elif opcao == 4:
+    print("Resultado:", dividir(a, b))
+
+else:
+    print("Opção inválida!")
+
+-----
+
+10) Arquivo TXT — tarefas
+while True:
+    print("\n1 - Adicionar tarefa")
+    print("2 - Listar tarefas")
+    print("3 - Sair")
+
+    opcao = input("Escolha: ")
+
+    if opcao == "1":
+        tarefa = input("Digite a tarefa: ")
+
+        with open("tarefas.txt", "a") as arquivo:
+            arquivo.write(tarefa + "\n")
+
+    elif opcao == "2":
+        try:
+            with open("tarefas.txt", "r") as arquivo:
+                tarefas = arquivo.readlines()
+
+            for i, tarefa in enumerate(tarefas, 1):
+                print(i, "-", tarefa.strip())
+
+        except FileNotFoundError:
+            print("Nenhuma tarefa cadastrada.")
+
+    elif opcao == "3":
+        break
+
+    else:
+        print("Opção inválida.")
+
+
+---------Exercícios de Sistema Operacional-----------
+1) Monitor de memória RAM
+import psutil
+import time
+
+while True:
+    memoria = psutil.virtual_memory()
+
+    print("=== MEMÓRIA RAM ===")
+    print("Total:", round(memoria.total / 1024**2, 2), "MB")
+    print("Usada:", round(memoria.used / 1024**2, 2), "MB")
+    print("Livre:", round(memoria.available / 1024**2, 2), "MB")
+    print("Uso:", memoria.percent, "%")
+
+    time.sleep(2)
+
+-----
+
+2) Monitor de RAM com alerta
+import psutil
+import time
+
+limite = float(input("Digite o limite de uso (%): "))
+
+while True:
+    memoria = psutil.virtual_memory()
+
+    print("Uso da RAM:", memoria.percent, "%")
+
+    if memoria.percent > limite:
+        print("ALERTA: uso de RAM acima do limite!")
+
+    time.sleep(2)
+
+-----
+
+3) Gerenciador de espaço em disco
+import psutil
+
+particoes = psutil.disk_partitions()
+
+for p in particoes:
+    try:
+        uso = psutil.disk_usage(p.mountpoint)
+
+        print("\nPartição:", p.mountpoint)
+        print("Total:", round(uso.total / 1024**3, 2), "GB")
+        print("Usado:", round(uso.used / 1024**3, 2), "GB")
+        print("Livre:", round(uso.free / 1024**3, 2), "GB")
+        print("Uso:", uso.percent, "%")
+
+    except PermissionError:
+        pass
+
+-----
+
+4) Alerta de pouco espaço
+import psutil
+
+limite = 10
+
+for p in psutil.disk_partitions():
+    try:
+        uso = psutil.disk_usage(p.mountpoint)
+        livre = 100 - uso.percent
+
+        if livre < limite:
+            print("ALERTA:", p.mountpoint, "está com pouco espaço!")
+            print("Espaço livre:", round(livre, 2), "%")
+
+    except PermissionError:
+        pass
+
+-----
+
+5) Monitor de tráfego de rede
+import psutil
+import time
+
+anterior = psutil.net_io_counters()
+
+while True:
+    time.sleep(1)
+
+    atual = psutil.net_io_counters()
+
+    download = atual.bytes_recv - anterior.bytes_recv
+    upload = atual.bytes_sent - anterior.bytes_sent
+
+    print("Download:", round(download / 1024, 2), "KB/s")
+    print("Upload:", round(upload / 1024, 2), "KB/s")
+
+    anterior = atual
+
+-----
+
+6) Monitor de CPU
+import psutil
+import time
+
+while True:
+    cpu = psutil.cpu_percent(interval=1, percpu=True)
+
+    print("CPU Total:", psutil.cpu_percent(), "%")
+
+    for i, uso in enumerate(cpu):
+        print("Núcleo", i, ":", uso, "%")
+
+    time.sleep(1)
+
+-----
+
+7) Histórico de uso da CPU
+import psutil
+import time
+from datetime import datetime
+
+while True:
+    uso = psutil.cpu_percent()
+
+    data = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    with open("cpu_log.txt", "a") as arquivo:
+        arquivo.write(f"{data} - CPU: {uso}%\n")
+
+    time.sleep(5)
+
+-----
+
+8) Informações do processador
+import psutil
+import platform
+
+print("=== PROCESSADOR ===")
+
+print("Modelo:", platform.processor())
+
+print("Núcleos físicos:", psutil.cpu_count(logical=False))
+print("Núcleos lógicos:", psutil.cpu_count(logical=True))
+
+frequencia = psutil.cpu_freq()
+
+if frequencia:
+    print("Frequência:", round(frequencia.current, 2), "MHz")
+
+print("Número de série: não disponível de forma portátil.")
+
+-----
+
+9) Dispositivos de entrada e saída
+import psutil
+
+# Exemplos de dispositivos de E/S:
+# Teclado, mouse, monitor, impressora, HD, SSD e pendrive.
+
+particoes = psutil.disk_partitions()
+
+for i, p in enumerate(particoes):
+    print(i, "-", p.mountpoint)
+
+escolha = int(input("Escolha uma partição: "))
+
+p = particoes[escolha]
+uso = psutil.disk_usage(p.mountpoint)
+
+print("\n=== INFORMAÇÕES ===")
+print("Dispositivo:", p.device)
+print("Ponto de montagem:", p.mountpoint)
+print("Sistema de arquivos:", p.fstype)
+print("Espaço total:", round(uso.total / 1024**3, 2), "GB")
+print("Espaço usado:", round(uso.used / 1024**3, 2), "GB")
+print("Espaço livre:", round(uso.free / 1024**3, 2), "GB")
+
+-----
+
+10) Painel integrado — RAM + CPU + Disco + Rede
+import psutil
+import time
+import os
+
+anterior = psutil.net_io_counters()
+
+while True:
+    time.sleep(2)
+
+    memoria = psutil.virtual_memory()
+    cpu = psutil.cpu_percent()
+    disco = psutil.disk_usage("/")
+    atual = psutil.net_io_counters()
+
+    download = (atual.bytes_recv - anterior.bytes_recv) / 1024
+    upload = (atual.bytes_sent - anterior.bytes_sent) / 1024
+
+    os.system("cls" if os.name == "nt" else "clear")
+
+    print("=== PAINEL DE MONITORAMENTO ===")
+    print("RAM:", memoria.percent, "% -",
+          round(memoria.used / 1024**2, 2), "MB usados")
+
+    print("CPU:", cpu, "%")
+
+    print("Disco livre:",
+          round(disco.free / 1024**3, 2), "GB")
+
+    print("Download:", round(download / 2, 2), "KB/s")
+    print("Upload:", round(upload / 2, 2), "KB/s")
+
+    anterior = atual
